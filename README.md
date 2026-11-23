@@ -29,8 +29,24 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## CRUD dengan Prisma dan SQLite
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+cp .env.example .env
+npm run db:push
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Buka `http://localhost:3000`.
+
+## Deploy ke Vercel
+
+1. Push repository ke GitHub.
+2. Import repository melalui Vercel dengan framework Next.js.
+3. Tambahkan environment variable `DATABASE_URL` pada Project Settings.
+4. Jalankan deployment.
+
+Untuk latihan lokal, gunakan `.env` dengan `DATABASE_URL="file:./dev.db"`.
+SQLite pada filesystem serverless Vercel bersifat sementara dan tidak cocok untuk
+data produksi permanen. Untuk deployment produksi, gunakan database eksternal
+yang didukung Prisma dan ubah `provider` serta `DATABASE_URL` pada schema.
